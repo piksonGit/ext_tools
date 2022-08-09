@@ -1,0 +1,24 @@
+{
+  "name":"tools",
+  "version":"1.0.0",
+  "manifest_version":2,
+  "description":"tools function",
+  "icons":{
+    "16":"img/icon.webp",
+    "48":"img/icon.webp",
+    "128":"img/icon.webp"
+  },
+  "content_scripts": [
+    {
+      "matches":["<all_urls>"],
+      "js": ["findvideo.js"]
+    }
+  ],
+  "permissions":[
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "<all_urls>",
+    "tabs"
+  ]
+}
