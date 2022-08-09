@@ -8,10 +8,15 @@
     "48":"img/icon.webp",
     "128":"img/icon.webp"
   },
+  "devtools_page":"devtools.html",
+  "background":{
+    "scripts":["background.js"]
+  },
   "content_scripts": [
     {
       "matches":["<all_urls>"],
-      "js": ["findvideo.js"]
+      "js": ["content.js"],
+      "run_at":"document_start"
     }
   ],
   "permissions":[
@@ -19,6 +24,12 @@
     "webRequestBlocking",
     "storage",
     "<all_urls>",
-    "tabs"
-  ]
+    "tabs",
+    "contextMenus"
+  ],
+  "browser_action":{
+    "default_icon":"img/icon.webp",
+    "default_title":"展示视频地址",
+    "default_popup":"popup.html"
+  }
 }
