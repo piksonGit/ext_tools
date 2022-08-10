@@ -6,20 +6,27 @@ chrome.contextMenus.create(
         }
     }
 );
+var m3u8arr = [];
 console.log("测试背景")
 //使用webRequest来拦截请求
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
+        if(details.url.indexOf(".m3u8")!= -1) {
+            m3u8arr.push(details.url);
+        }
         //将获取到的url传递给content_script
-        chrome.tabs.query({active:true},function(tabs){
+       /*  chrome.tabs.query({active:true},function(tabs){
             if (details.url.indexOf(".m3u8")!=-1){
                 chrome.tabs.sendMessage(tabs[0].id,{type:'sendData',data:details.url})
             }
             
-        })
+        }) */
     },
     {urls:["<all_urls>"]},
-)
+);
+chrome.tabs.onUpdated.addListener(function (tabId, selectInfo){
+    m3u8arr = [];
+})
 /* chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     if (message.name === "requestinfo") {
         if (message.content) {
