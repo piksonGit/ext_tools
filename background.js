@@ -11,7 +11,9 @@ console.log("测试背景")
 //使用webRequest来拦截请求
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
+        console.log(details.url);
         if(details.url.indexOf(".m3u8")!= -1) {
+            
             m3u8arr.push(details.url);
         }
         //将获取到的url传递给content_script

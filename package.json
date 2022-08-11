@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/piksonGit/ext_tools/issues"
   },
-  "homepage": "https://github.com/piksonGit/ext_tools#readme"
+  "homepage": "https://github.com/piksonGit/ext_tools#readme",
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
 }
