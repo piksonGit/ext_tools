@@ -5,3 +5,23 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
         console.log(message.data)
     }
 })
+let title = "视频";
+
+document.onreadystatechange = function(){
+    if (document.readyState == "complete") {
+        let titles = document.getElementsByTagName("title");
+        console.log("本网页的标题为");
+        console.log(titles);
+        console.log(titles.length);
+        console.log(titles[0].text);
+        if (titles.length != 0) {
+            title = titles[0].text;
+        }
+        chrome.runtime.sendMessage({title},function(response){
+        
+        })
+    }
+}
+
+
+

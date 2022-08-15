@@ -7,7 +7,16 @@ chrome.contextMenus.create(
     }
 );
 var m3u8arr = [];
-console.log("测试背景")
+var title = "视频标题";
+console.log("测试背景");
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        console.log(request.title)
+      if(request.title){
+        title = request.title;
+      }
+    }
+  );
 //使用webRequest来拦截请求
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
