@@ -11,7 +11,6 @@ console.log("测试背景")
 //使用webRequest来拦截请求
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
-        console.log(details.url);
         if(details.url.indexOf(".m3u8")!= -1) {
             
             m3u8arr.push(details.url);
@@ -26,7 +25,17 @@ chrome.webRequest.onBeforeRequest.addListener(
     },
     {urls:["<all_urls>"]},
 );
-chrome.tabs.onUpdated.addListener(function (tabId, selectInfo){
+chrome.tabs.onUpdated.addListener(function (tabId, selectInfo,tab){
+   /*  chrome.storage.sync.get([tabId], function (result) {
+        if (result) {
+            console.log(result)
+        } else {
+            chrome.storage.set({})
+        }
+    }); */
+    
+    console.log(selectInfo)
+    console.log(tab)
     m3u8arr = [];
 })
 /* chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
