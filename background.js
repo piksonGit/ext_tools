@@ -33,10 +33,11 @@ chrome.tabs.onUpdated.addListener(function (tabId, selectInfo,tab){
             chrome.storage.set({})
         }
     }); */
-    
+    if(selectInfo.status == "loading") {
+        m3u8arr = [];
+    }
     console.log(selectInfo)
     console.log(tab)
-    m3u8arr = [];
 })
 /* chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     if (message.name === "requestinfo") {
