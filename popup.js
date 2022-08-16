@@ -7,7 +7,7 @@ function createLi(url,title){
   const lNode = document.createElement('button');
   lNode.className = "btn btn-info";
   lNode.value = url;
-  lNode.innerHTML = title;
+  lNode.innerHTML = "点击复制：" + title;
   lNode.style.overflow = 'hidden';
   lNode.style.margin = '4px auto';
   lNode.style.marginLeft = '10px';
@@ -28,8 +28,12 @@ if (bg.m3u8arr.length != 0) {
 }
 var btns = document.querySelectorAll('button');
 var clipboard = new ClipboardJS(btns);
+//<div class="alert alert-success" role="alert">...</div>
 clipboard.on('success',function(e){
-  alert("复制成功");
+  let noti = document.getElementById("noti");
+  noti.style.visibility = "visible";
+  $('#noti').delay(1000).hide(0);
+  
 })
 
 /* chrome.webRequest.onBeforeRequest.addListener(

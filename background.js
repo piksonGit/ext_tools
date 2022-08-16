@@ -11,7 +11,6 @@ var title = "视频标题";
 console.log("测试背景");
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        console.log(request.title)
       if(request.title){
         title = request.title;
       }
