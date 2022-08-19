@@ -29,10 +29,20 @@ if (bg.m3u8arr.length != 0) {
 var btns = document.querySelectorAll('button');
 var clipboard = new ClipboardJS(btns);
 //<div class="alert alert-success" role="alert">...</div>
-clipboard.on('success',function(e){
+//e.text就是m3u8的地址
+//都要加await
+clipboard.on('success',async function(e){
+  //on success的回调事件中解析m3u8文件并且将所有的ts文件缓存起来
+  //假定有两种情况，1. ts的path和host都是跟m3u8链接一样的。2. 两者不一样，但是在m3u8文件中会直接写明.ts文件的完整链接
+  let url = new URL(e.text);
+  console.log(url)
   let noti = document.getElementById("noti");
   noti.style.visibility = "visible";
   $('#noti').delay(1000).hide(0);
+  let res = await fetch(e.text);
+  console.log(await res.text());
+  console.log("剪切板回调");
+  console.log(e);
   
 })
 
